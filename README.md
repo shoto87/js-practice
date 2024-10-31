@@ -6,7 +6,7 @@ This repository contains basic to medium-level JavaScript problems that I'm prac
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/javascript-practice.git
+    git clone [https://github.com/shoto87/js-practice.git]
     ```
 2. Navigate to the project directory:
     ```sh
@@ -21,10 +21,10 @@ This repository contains basic to medium-level JavaScript problems that I'm prac
 
 ```plaintext
 .
-├── basic/
+├── imp/
 │   ├── problem1.js
 │   └── problem2.js
-├── medium/
-│   ├── problem1.js
-│   └── problem2.js
+│ 
+├── problem1.js
+│   problem2.js
 └── README.md
