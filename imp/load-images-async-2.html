@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    div img {
+      width: 50%;
+      height: auto;
+    }
+  </style>
+  <body>
+    <div id="img"></div>
+    <script>
+      let loadImage = (src) => {
+        return new Promise((resolve, reject) => {
+          let img = new Image();
+          img.onload = () => {
+            resolve(img);
+          };
+          img.onerror = () => {
+            reject(new error("Image loading failed : " + src));
+          };
+          img.src = src;
+        });
+      };
+      let storeImage = async () => {
+        let imgContainer = document.getElementById("img");
+        let imgUrl = [
+          "./images/anime-01.jpg",
+          "./images/anime-02.jpg",
+          "./images/anime-03.jpg",
+          "./images/anime-04.jpg",
+          "./images/anime-05.jpg",
+          "./images/anime-06.jpg",
+        ];
+        try {
+          const images = await Promise.all(imgUrl.map(loadImage));
+          images.forEach((image) => img.appendChild(image));
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      };
+      loadImage();
+      storeImage();
+    </script>
+  </body>
+</html>

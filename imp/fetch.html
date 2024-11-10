@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="data"></div>
+    <script>
+      // fetch using async await
+
+      let fetchData = async (url) => {
+        console.log("response in the way");
+
+        try {
+          let response = await fetch(url);
+          if (!response.ok) {
+            throw new Error("request failed status: " + response.status);
+          }
+          let data = await response.json();
+          return data;
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+
+      let storeData = async () => {
+        let dataDiv = document.getElementById("data");
+        let data = await fetchData(
+          "https://jsonplaceholder.typicode.com/posts"
+        );
+
+        data.forEach((post) => {
+          let postDiv = document.createElement("div");
+          postDiv.innerHTML = `<h3>${post.title}</h3><p>${post.body}</p>`;
+          dataDiv.appendChild(postDiv);
+        });
+      };
+
+      storeData();
+    </script>
+  </body>
+</html>
